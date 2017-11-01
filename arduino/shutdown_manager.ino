@@ -1,10 +1,13 @@
 #include "SleepyPi2.h"
+#include <PCF8523.h>
+#include <Time.h>
+#include <Wire.h>
 #include <LowPower.h>
 
-HANDSHAKE_IN = 7;
-HANDSHAKE_OUT = 17;
-RELAY = 16;
-ACCPWR = 5;
+int HANDSHAKE_IN = 7;
+int HANDSHAKE_OUT = 17;
+int RELAY = 16;
+int ACCPWR = 5;
 
 void wake_arduino(){
   // just a placeholder - code then resumes following interrupt
@@ -29,7 +32,7 @@ void sleepnow(){
   attachInterrupt(ACCPWR,wake_arduino, RISING);
   sleep_mode();
   sleep_disable();
-  detach_interrupt(ACCPWR);
+  detachInterrupt(ACCPWR);
   digitalWrite(RELAY, HIGH);
 }
 
