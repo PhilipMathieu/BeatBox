@@ -10,7 +10,7 @@ void wake_arduino(){
   // just a placeholder - code then resumes following interrupt
 }
 
-void setup() {
+void shutdown_manager_setup() {
  
   // Configure pins
   pinMode(HANDSHAKE_OUT, OUTPUT);
@@ -33,7 +33,7 @@ void sleepnow(){
   digitalWrite(RELAY, HIGH);
 }
 
-void loop(){
+void shutdown_manager_loop(){
   // A start of loop we must be powered up
   if (digitalRead(ACCPWR) == LOW){
     // tell Pi to power off
